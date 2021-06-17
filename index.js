@@ -79,6 +79,8 @@ class Seasons {
    * [Exercise 5A] Seasons creates a seasons object
    */
   constructor() {
+    this.seasons = ['summer', 'fall', 'winter', 'spring']
+    this.currentSeason = 0
     // ✨ initialize whatever properties are needed
   }
 
@@ -96,6 +98,13 @@ class Seasons {
    */
   next() {
     // ✨ implement
+    const result = this.seasons[this.currentSeason]
+    if (this.currentSeason === 3) {
+      this.currentSeason = 0
+    } else {
+      ++this.currentSeason
+    }
+    return result
   }
 }
 
