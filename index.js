@@ -39,7 +39,7 @@ console.log(trimPropertiesMutation())
  */
 function findLargestInteger(integers) {
   let result = integers[0].integer
-  for (let idx =1; idx < integers.length; idx++) {
+  for (let idx = 1; idx < integers.length; idx++) {
     if (integers[idx].integer > result) {
       result = integers[idx].integer
     }
@@ -70,7 +70,7 @@ class Counter {
    * counter.countDown() // returns 0
    */
   countDown() {
-    return this.count > 0? this.count-- : 0 
+    return this.count > 0 ? this.count-- : 0
   }
 }
 
@@ -119,6 +119,7 @@ class Car {
     this.odometer = 0 // car initilizes with zero miles
     this.tank = tankSize // car initiazes full of gas
     // ✨ initialize whatever other properties are needed
+    this.tankSize = tankSize
   }
 
   /**
@@ -136,6 +137,15 @@ class Car {
    */
   drive(distance) {
     // ✨ implement
+    const mileCanDrive = this.tank * this.mpg
+    if (distance <= mileCanDrive) {
+      this.odometer = this.odometer + distance 
+      this.tank = this.tank - (distance / this.mpg)
+    } else{
+      this.odometer = this.odometer + mileCanDrive
+      this.tank = 0
+    }
+    return this.odometer
   }
 
   /**
@@ -151,6 +161,13 @@ class Car {
    */
   refuel(gallons) {
     // ✨ implement
+    const gallonsFilled = this.tankSize * this.tank
+    if (gallons <= gallonsFilled) {
+      this.tank = this.tank + gallons
+    } else{
+      this.tank = this.tankSize 
+    }
+    return this.tank = this.mpg
   }
 }
 
@@ -173,8 +190,9 @@ class Car {
  *    // error.message is "number must be a number"
  * })
  */
-function isEvenNumberAsync(number) {
+async function isEvenNumberAsync(number) {
   // ✨ implement
+  return number % 2 === 0 || false
 }
 
 module.exports = {
